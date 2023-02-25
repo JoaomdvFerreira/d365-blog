@@ -1,5 +1,5 @@
 ---
-name: Einar Guðni Guðjónsson
+name: Joao Ferreira
 avatar: /static/images/einar-avatar-new.jpg
 
 occupation: Software developer
