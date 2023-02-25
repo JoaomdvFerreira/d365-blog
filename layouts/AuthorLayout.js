@@ -37,7 +37,7 @@ export default function AuthorLayout({ children, frontMatter }) {
               alt="avatar"
               width="192px"
               height="192px"
-              className="w-48 h-48 rounded-full"
+              className="w-48 h-48 rounded-full object-cover"
             />
             <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
             <div className="text-gray-500 dark:text-gray-400">{occupation}</div>
@@ -46,13 +46,7 @@ export default function AuthorLayout({ children, frontMatter }) {
           {/* <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">{children}</div> */}
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
             <p>{text1}</p>
-            <span>Are you interested in what I'm doing </span>
-            <Link
-              href={'/now'}
-              className="special-underline hover:dark:text-gray-800 dark:text-gray-100 no-underline"
-            >
-              now{' '}
-            </Link>
+            <span>Hi there! 👋</span>
             <br />
             <p>
               <RoughNotation
@@ -64,22 +58,14 @@ export default function AuthorLayout({ children, frontMatter }) {
                 {text2}
               </RoughNotation>
             </p>
-            <br />
             <p>
-              {text3} <br />
-              <Link
-                href={'/uses'}
-                className="special-underline no-underline hover:dark:text-gray-800 dark:text-gray-100"
-              >
-                Here{' '}
-              </Link>
-              you can see what I use on daily basis.
+              In summary, I'm a big dork trying to have fun while improving myself and greatful for
+              being able to help other people/projects! 💪
             </p>
-            <br />
             <p>
               Feel free to reach out if you have anything to talk about, you can reach me on{' '}
               <RoughNotation type="highlight" show={true} color="#FBCFE8" animationDelay={1200}>
-                <span className="dark:text-gray-700">einargudnig@gmail.com </span>
+                <span className="dark:text-gray-700">joao.mdvferreira@gmail.com </span>
               </RoughNotation>
               or on social media.
             </p>

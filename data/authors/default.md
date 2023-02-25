@@ -1,14 +1,14 @@
 ---
-name: Joao Ferreira
-avatar: /static/images/einar-avatar-new.jpg
+name: João Ferreira
+avatar: /static/images/jf-avatar-new.jpg
 
-occupation: Software developer
-company: Maul
-email: einargudnig@gmail.com
-twitter: https://twitter.com/einargudni
-linkedin: https://www.linkedin.com/einargudni
-github: https://github.com/einargudnig
-text1: I graduated as a computer scientist from the University of Iceland in the summer of 2020. I live in Reykjavík.
-text2: I'm very dedicated to learn new things and to truly belive that you should never stop learning. I enjoy creating different things, whether that be websites, application or anything in between.
-text3: At my first full-time job as a developer I feel like I've been very lucky to experience a broad and diverce part of projects and tasks. I get to deal with everything from user feedback, design and to backend tests and improving parts of our daily operations.
+occupation: Analyst Programmer
+company: Savills
+email: joao.mdvferreira@gmail.com
+twitter: https://twitter.com/
+linkedin: https://www.linkedin.com/
+github: https://github.com/JoaomdvFerreira
+text1: I'm an Analyst Programmer with a primary focus on CRM Dynamics 365 development and customization. I live in Portugal.
+text2: I'm passionate about creating efficient and effective solutions for businesses that help them achieve their goals.
+text3: In addition to my expertise in CRM Dynamics 365, I'm enthusiastic about using ReactJs and Javascript/Typescript to develop web applications. I believe that these technologies provide a powerful platform for building dynamic, engaging, and intuitive user experiences.
 ---

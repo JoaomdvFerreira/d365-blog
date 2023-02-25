@@ -27,13 +27,14 @@ export default function Home({ posts }) {
           <div className="flex items-center justify-between">
             <div className="">
               <h1 className="mb-2 text-2xl font-extrabold tracking-tight leading-11 text-slate-900 dark:text-slate-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-                I'm <span className="text-primary-color dark:text-primary-color-dark">Einar</span>,
-                a curious software developer who's trying to get a bit better every day
+                We are{' '}
+                <span className="text-primary-color dark:text-primary-color-dark">Dorks365</span>, a
+                curious young group of dynamics 365 developers
               </h1>
             </div>
             <div>
               <Image
-                src="/static/images/einar-avatar-new.jpg"
+                src="/static/images/logo.png"
                 alt="avatar"
                 width="384px"
                 height="384px"
@@ -43,7 +44,7 @@ export default function Home({ posts }) {
             </div>
           </div>
           <p className="text-lg leading-7 text-slate-600 dark:text-slate-300">
-            This is my place for{' '}
+            This is our place for{' '}
             <RoughNotation
               type="underline"
               show={true}
@@ -51,8 +52,9 @@ export default function Home({ posts }) {
               animationDelay={800}
               animationDuration={1200}
             >
-              thoughts,{' '}
+              projects
             </RoughNotation>
+            ,{' '}
             <RoughNotation
               type="underline"
               show={true}
@@ -60,7 +62,7 @@ export default function Home({ posts }) {
               animationDelay={1400}
               animationDuration={1200}
             >
-              reflections,{' '}
+              ideas{' '}
             </RoughNotation>
             &{' '}
             <RoughNotation

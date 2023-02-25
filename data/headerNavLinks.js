@@ -3,9 +3,7 @@ const headerNavLinks = [
   // { href: '/tags', title: 'Tags' },
   { href: '/projects', title: 'Projects' },
   { href: '/about', title: 'About' },
-  { href: '/now', title: 'Now' },
-  // { href: '/my-books', title: 'LaTeX book' },
-  // { href: '/latex-template', title: 'Latex' },
+  // { href: '/now', title: 'Now' },
 ]
 
 export default headerNavLinks

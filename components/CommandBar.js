@@ -29,7 +29,7 @@ export default function CommandBar(props) {
       shortcut: ['e'],
       keywords: 'send-email',
       section: 'General',
-      perform: () => window.open('mailto:einargudnig@gmail.com', '_blank'),
+      perform: () => window.open('mailto:joao.mdvdferreira@gmail.com', '_blank'),
       icon: <i className="ri-mail-line" style={iconStyle} />,
     },
     {
@@ -38,7 +38,7 @@ export default function CommandBar(props) {
       shortcut: ['s'],
       keywords: 'view-source',
       section: 'General',
-      perform: () => window.open('https://github.com/einargudnig/einargudni.com', '_blank'),
+      perform: () => window.open('https://github.com/JoaomdvFerreira/d365-blog', '_blank'),
       icon: <i className="ri-braces-line" style={iconStyle} />,
     },
     {
@@ -92,7 +92,7 @@ export default function CommandBar(props) {
       shortcut: ['g'],
       keywords: 'go-github',
       section: 'Follow',
-      perform: () => window.open('https://github.com/einargudnig', '_blank'),
+      perform: () => window.open('https://github.com/JoaomdvFerreira', '_blank'),
       icon: <i className="ri-github-line" style={iconStyle} />,
     },
     {
@@ -101,7 +101,7 @@ export default function CommandBar(props) {
       shortcut: ['l'],
       keywords: 'go-linkedin',
       section: 'Follow',
-      perform: () => window.open('https://linkedin.com/in/einargudni', '_blank'),
+      perform: () => window.open('https://www.linkedin.com/in/joao-mdvferreira/', '_blank'),
       icon: <i className="ri-linkedin-line" style={iconStyle} />,
     },
   ]
@@ -170,7 +170,7 @@ const positionerStyle = {
   width: '100%',
   inset: '0px',
   padding: '14vh 16px 16px',
-  background: 'rgba(0, 0, 0, .8)',
+  background: 'rgba(0, 0, 0, 0.6)',
   boxSizing: 'border-box',
 }
 
@@ -180,6 +180,7 @@ const animatorStyle = {
   color: '#fff',
   borderRadius: '8px',
   overflow: 'hidden',
+  background: 'black',
 }
 
 const searchStyle = {

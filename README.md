@@ -1,4 +1,4 @@
-# My personal website
+# Dorks365 blogsite 💥💥
 
 This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blog built on a template from Timothy Lin. [Repo](https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
@@ -17,22 +17,13 @@ This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com
 - Support for nested routing of blog posts
 - SEO friendly with RSS feed, sitemaps and more!
 
-## Sample posts
-
 ## Quick Start Guide
 
 1. JS (official support)
 
 ```bash
-npx degit https://github.com/einargudnig/einargudni.com.git
+git clone https://github.com/JoaomdvFerreira/d365-blog.git
 ```
-
-2. Personalize `siteMetadata.js` (site related information)
-3. Personalize `authors/default.md` (main author)
-4. Modify `projectsData.js`
-5. Modify `headerNavLinks.js` to customize navigation links
-6. Add blog posts
-7. Deploy on Vercel
 
 ## Development
 
@@ -49,8 +40,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 ### Compose
 
