@@ -23,6 +23,7 @@ module.exports = {
         'primary-color': '#1e90ff',
         'primary-color-dark': '#FFFF66',
         'spotify-green': '#1DB954',
+        'buymeacofee-orange': '#ff813f',
         primary: colors.teal,
         gray: colors.neutral,
       },
