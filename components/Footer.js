@@ -22,15 +22,7 @@ export default function Footer() {
             rel="noreferrer"
             className="btn flex items-cente p-2 rounded text-sm w-auto text-gray-500 dark:text-gray-400"
           >
-            <RoughNotation
-              type="box"
-              show={true}
-              color="#ADD8E6"
-              animationDelay={800}
-              animationDuration={1200}
-            >
-              ☕ Buy Us a Coffee
-            </RoughNotation>
+            ☕ Buy Us a Coffee
           </a>
         </div>
         <div className="flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
