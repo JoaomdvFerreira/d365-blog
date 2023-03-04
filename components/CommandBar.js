@@ -77,15 +77,6 @@ export default function CommandBar(props) {
       perform: () => router.push('/projects'),
       icon: <i className="ri-lightbulb-line" style={iconStyle} />,
     },
-    // {
-    //   id: 'reminder',
-    //   name: 'Reminder',
-    //   shortcut: ['g', 'r'],
-    //   keywords: 'go-reminder',
-    //   section: 'Go To',
-    //   perform: () => router.push('/reminder'),
-    //   icon: <i className="ri-time-line" style={iconStyle} />,
-    // },
     {
       id: 'github',
       name: 'Github',
