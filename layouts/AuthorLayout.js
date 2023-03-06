@@ -1,6 +1,4 @@
-import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
-import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
 import Experience from '@/components/Experience'
 import experienceData from '@/data/experienceData'
@@ -17,19 +15,16 @@ export default function AuthorLayout({ children, frontMatter }) {
     linkedin,
     github,
     text1,
+    salutation,
     text2,
     text3,
+    summary,
   } = frontMatter
 
   return (
     <>
       <PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
       <div className="">
-        <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            About
-          </h1>
-        </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
           <div className="flex flex-col items-center pt-8 space-x-2">
             <Image
@@ -46,7 +41,7 @@ export default function AuthorLayout({ children, frontMatter }) {
           {/* <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">{children}</div> */}
           <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
             <p>{text1}</p>
-            <span>Hi there! 👋</span>
+            <span>{salutation}</span>
             <br />
             <p>
               <RoughNotation
@@ -58,14 +53,11 @@ export default function AuthorLayout({ children, frontMatter }) {
                 {text2}
               </RoughNotation>
             </p>
-            <p>
-              In summary, I'm a big dork trying to have fun while improving myself and greatful for
-              being able to help other people/projects! 💪
-            </p>
+            <p>{summary}</p>
             <p>
               Feel free to reach out if you have anything to talk about, you can reach me on{' '}
               <RoughNotation type="highlight" show={true} color="#FBCFE8" animationDelay={1200}>
-                <span className="dark:text-gray-700">joao.mdvferreira@gmail.com </span>
+                <span className="dark:text-gray-700">{email} </span>
               </RoughNotation>
               or on social media.
             </p>
@@ -74,23 +66,35 @@ export default function AuthorLayout({ children, frontMatter }) {
         <div className="mt-10">
           <div className="pt-6 pb-8 space-y-2 md:space-y-5">
             <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-              Experience
+              Now
             </h1>
           </div>
           <div className="pt-8 pb-8 max-w-none xl:col-span-2">
-            {experienceData.map((d) => (
+            {name === 'João Ferreira' ? (
               <Experience
-                key={d.company}
-                title={d.title}
-                company={d.company}
-                location={d.location}
-                range={d.range}
-                url={d.url}
-                text1={d.text1}
-                text2={d.text2}
-                text3={d.text3}
+                key={experienceData[0].company}
+                title={experienceData[0].title}
+                company={experienceData[0].company}
+                location={experienceData[0].location}
+                range={experienceData[0].range}
+                url={experienceData[0].url}
+                text1={experienceData[0].text1}
+                text2={experienceData[0].text2}
+                text3={experienceData[0].text3}
               />
-            ))}
+            ) : (
+              <Experience
+                key={experienceData[1].company}
+                title={experienceData[1].title}
+                company={experienceData[1].company}
+                location={experienceData[1].location}
+                range={experienceData[1].range}
+                url={experienceData[1].url}
+                text1={experienceData[1].text1}
+                text2={experienceData[1].text2}
+                text3={experienceData[1].text3}
+              />
+            )}
           </div>
         </div>
       </div>
