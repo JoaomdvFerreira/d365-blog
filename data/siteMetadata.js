@@ -18,10 +18,7 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/',
   locale: 'en-US',
   analytics: {
-    // supports plausible, simpleAnalytics or googleAnalytics
-    plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
-    simpleAnalytics: false, // true or false
-    googleAnalyticsId: 'G-95HPC8T3GB', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TAG, // e.g. UA-000000-2 or G-XXXXXXX
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo
