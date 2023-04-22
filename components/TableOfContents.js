@@ -5,8 +5,8 @@ const TableOfContents = () => {
 
   return (
     <div className="hidden lg:block">
-      <div className="mb-4 flex items-center gap-4">
-        😊
+      <div className="mb-4 flex items-center gap-4 mt-3">
+        📑
         <div>Table of contents</div>
       </div>
       <div>

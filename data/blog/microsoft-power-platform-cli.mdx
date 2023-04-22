@@ -1,9 +1,400 @@
 ---
-title: Microsoft Power Platform CLI
-date: '2023-03-21'
-tags: ['Microsoft', 'Dynamics365', 'Command Line Interface']
-draft: true
-summary: Microsoft Power Platform CLI is a simple, one-stop developer CLI that empowers developers and ISVs to perform various operations in Microsoft Power Platform related to environment lifecycle, authentication, and work with Microsoft Dataverse environments, solution packages, portals, code components, and more.
-images: []
+title: Want to be as good as a DORK using PAC CLI? This post is the right one for you!
+date: '2023-04-22'
+tags: ['command-line', 'automation', 'tools', 'tutorial', 'azuredevops', 'dynamics365']
+draft: false
+summary: This post is a tutorial on how to use the PAC CLI to automate your development tasks. Focusing on the most common tasks, we will show you how to use the CLI and incorporate it with a real life scenario.
+images: 'post1/Image1.png'
 layout: PostLayout
 ---
+
+## What is PAC CLI?
+
+Perfect question.
+
+> _PAC CLI is a tool for developers to manage Power Apps and Dynamics 365 projects from the command line. This tool helps developers work more efficiently by automating tasks such as creating and managing solutions, components, and environments._
+
+In practice, it’s a wrapper for all the manual tasks that we used to be doing in the format of command lines _(you thought you would be a DORK without those, eh?)_. Creating and managing all types of Dynamics 365 components has never been this easy and efficient.
+
+**Stop the nonsense and give me examples!**
+
+Wow. Breathe, we've got you covered. Clearly, you are a newbie DORK that ❤️ _(:loves:)_ action, and that’s the 👻 _(:spirit:)_! Let’s get you some juice before your 🧠 _(:brain:)_ runs away.
+
+### Requirements
+
+- [Node Js](https://nodejs.org/en) - install npm during installation;
+- Visual Studio Code - [download here](https://code.visualstudio.com/) ;
+- Dynamics 365 trial or environment. Create a 30 days trial [here](https://powerapps.microsoft.com/) for free ;
+- Azure DevOps Project. Create your repository [here.](https://azure.microsoft.com/en-us/products/devops/repos) ([Creating an Azure DevOps Repo Helper](https://learn.microsoft.com/en-us/azure/devops/repos/git/creatingrepo?view=azure-devops&tabs=visual-studio-2022)) ;
+- Power Platform Tools extension in Visual Studio Code - [download here](https://marketplace.visualstudio.com/items?itemName=microsoft-IsvExpTools.PowerPlatformTools#:~:text=Power%20Platform%20Tools%20for%20Visual,endpoints%2C%20webhooks%2C%20and%20more).
+
+<aside
+  style={{
+    borderRadius: '3px',
+    background: 'rgb(241, 241, 239)',
+    padding: '12px',
+    color: 'rgb(31 32 35)',
+  }}
+>
+👉 If you have completed this requirement list, you are now officially committed and able to breeze through the whole tutorial! 👏👏  <span style={{ fontWeight: 'bold' }}>
+What a champion! </span> 🏆
+
+</aside>
+
+Let’s now go step-by-step for the Power Platform Tools extension so you can follow along.
+
+### Setup
+
+#### Step 1 - Install PPT
+
+→ Install Power Platform Tools from the Visual Studio Code extension manager tab.
+
+![**Image1** - Extension Manager - VS Code - Install Power Platform Tool](/static/images/blog/post1/Image1.png)
+
+**Image1** - Extension Manager → VS Code → Install Power Platform Tool
+
+#### Step 2 - New Terminal & Confirmation
+
+→ Check if everything is installed correctly by creating a new terminal on your Visual Studio Code
+
+![**Image2** - Main Bar - VS Code - Create a new terminal](/static/images/blog/post1/Image2.png)
+
+**Image2** - Main Bar → VS Code → Create a new terminal
+
+→ Run the command below to confirm that everything is installed correctly.
+
+```powershell
+pac
+```
+
+#### Step 3 - Knowing pac commands
+
+Overwhelming? Probably not, but let’s clear the fog and focus on these two highlighted commands in the list below:
+
+- Authentication Commands
+  - **auth**
+    - create
+      ```powershell
+      pac auth create --url https://org****.crm*.dynamics.com --name DorksOrg
+      ```
+    - list
+      ```powershell
+      pac auth list
+      ```
+    - select
+      ```powershell
+      pac auth select --index 1
+      ```
+- Solution Commands
+
+  - **solution**
+
+    - list
+      ```powershell
+      pac solution list
+      ```
+    - online-version
+      ```powershell
+      pac solution online-version --solution-name Dorks.CRM.Webresources --solution-version ${input:solutionVersion}
+      ```
+    - export
+
+      ```powershell
+      pac solution export --path ${input:userPath}/Dorks.CRM.Webresources --name DorksCRMWebresources --managed false --overwrite true
+      ```
+
+    - unpack
+      ```powershell
+      pac solution unpack --zipfile ${input:userPath}/Dorks.CRM.Webresources/DorksCRMWebresources.zip --packagetype unmanaged --folder ${input:userPath}/Dorks.CRM.Webresources/deploy
+      ```
+
+![**Image4** - Powershell Terminal - Visual Studio Code - Listing all commands available for pac command](/static/images/blog/post1/Image4.png)
+
+**Image4** - Powershell Terminal - Visual Studio Code - Listing all commands available for pac command
+
+![**Image5** - Powershell Terminal - Visual Studio Code - Listing all commands available for pac auth command](/static/images/blog/post1/Image5.png)
+
+**Image5** - Powershell Terminal - Visual Studio Code - Listing all commands available for pac auth command
+
+![**Image6** - Powershell Terminal - Visual Studio Code - Listing all commands available for pac solution command](/static/images/blog/post1/Image6.png)
+
+**Image6** - Powershell Terminal - Visual Studio Code - Listing all commands available for pac solution command
+
+### Mini-Project
+
+As the first rule in Dork's book says, “Be as practical as possible”, we are creating a mini-project that is being used in real life _(whatever that is)_. Something that you could implement easily and shine among your team members 🤓.
+
+#### Objective
+
+→ Add environment changes on development commits to an Azure DevOps repository.
+
+#### Why
+
+→ By including environment changes in code commits, we can ensure that changes are properly documented and tracked, which is important for maintaining the integrity of the development process. Additionally, this approach can help our team identify and resolve issues more quickly, as changes can be traced back to specific code commits. Basically, safeguard that no one comes and bites our 🍑 (:ass:) after we have clearly created the business logic in the wrong entity!
+
+Trial Environment ✅ (:check:), Azure DevOps Repository ✅ (:check:), Objective ✅ (:check:), Why question ✅ (:check:), major boredom from all the introductions ✅(:check:). I believe we've got it all covered, so it’s time to actually begin!
+
+<aside
+  style={{
+    borderRadius: '3px',
+    background: 'rgb(241, 241, 239)',
+    padding: '12px',
+    color: 'rgb(31 32 35)',
+  }}
+>
+  👉 <span style={{ fontWeight: 'bold' }}>Introduction completed. </span>👏👏👏 You have been
+  reading this for 5 straight minutes, and you completed the setup with success. Did someone tell
+  you today, “I’m so proud of you?”
+</aside>
+
+## Let the games begin 🎯
+
+### Intro
+
+A nice way to start every single project is to connect the dots. What does that mean in this case?
+
+Linking Visual Studio Code with our Trial Environment via the Power Platform CLI and clone the repository from Azure DevOps. For the ones that prefer arrows instead of words:
+
+**Dynamics 365 ⬅️ Visual Studio Code ➡️ Azure DevOps**
+
+Why are we doing this? Imagine eating a sandwich with only the bread. You can do it but aren’t you just eating a double-floor toast?
+Our Visual Studio Code setup here is our ham, our protein source! 💪 You will see in some minutes the power of having a proper sandwich!
+
+#### Environment
+
+→ [https://orgdea5ea55.crm4.dynamics.com/](https://orgdea5ea55.crm4.dynamics.com/)
+
+![Image7 - Dynamics 365 Trial Environment - Newly created solution Dorks.CRM.Webresources](/static/images/blog/post1/Image7.png)
+
+**Image7** - Dynamics 365 Trial Environment - Newly created solution Dorks.CRM.Webresources
+
+#### Azure DevOps Repository
+
+→ [https://dev.azure.com/dorks365/\_git/Dorks365](https://dev.azure.com/dorks365/_git/Dorks365)
+
+![Image8 - Azure DevOps - Setup of the repository](/static/images/blog/post1/Image9.png)
+
+**Image8** - Azure DevOps - Setup of the repository
+
+#### Visual Studio Code
+
+→ Coffee Ready!☕
+
+![Image9 - Visual Studio Code - Connected to Dynamics 365 Environment and with Azure DevOps Repository](/static/images/blog/post1/Image8.png)
+
+**Image9** - Visual Studio Code - Connected to Dynamics 365 Environment and with Azure DevOps Repository
+
+<aside
+  style={{
+    borderRadius: '3px',
+    background: 'rgb(241, 241, 239)',
+    padding: '12px',
+    color: 'rgb(31 32 35)',
+  }}
+>
+👉 Feel free to ask in the comment section if you are having trouble setting this up. We will assign <span style={{ fontWeight: 'bold' }}>our most capable DORK </span> to assist you!
+
+</aside>
+
+Time for the money shot:
+
+### **Visual Studio Code tasks**
+
+#### Quick intro
+
+Visual Studio Code tasks are like giving your computer a step-by-step guide on how to complete a specific task, just like making your bed in the morning.
+
+Imagine you're getting ready for the day and you need to make your bed. You have a specific routine you follow: you straighten out the sheets, fluff the pillows, and tuck in the comforter. It's like a mini-challenge that you complete each day to start off on the right foot.
+
+Now, let's say you could create a task for your computer to complete this chore for you. You could tell your computer what steps to take, just like your bed-making routine, and it would take care of the rest.
+
+For example, you could create a task that tells your computer to straighten the sheets, fluff the pillows, and tuck in the comforter using specific keystrokes or commands. This would be like creating a shortcut for your computer to make your bed for you.
+
+So, instead of having to go through each step yourself, you could trigger the task with just a few clicks or keystrokes and let your computer take care of the rest.
+
+You can check more on this [official link](https://code.visualstudio.com/docs/editor/tasks).
+
+#### Setup
+
+On your VS code folder project create a new folder labelled .vscode and create a new JSON file - tasks.json. You should end up with this project tree.
+
+![Image10 - Visual Studio Code - Project Tree](/static/images/blog/post1/Image10.png)
+
+**Image10** - Visual Studio Code - Project Tree
+
+In that tasks.json file copy the JSON structure below
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "DORKS.CRM.Webresources",
+      "type": "shell",
+      "command": ""
+    }
+  ],
+  "inputs": [
+    {
+      "id": "solutionVersion",
+      "description": "Solution Version for PAC tasks",
+      "default": "1.0.0.0",
+      "type": "promptString"
+    },
+    {
+      "id": "userPath",
+      "description": "User Path for PAC tasks",
+      "default": "Insert your path to the repo here.",
+      "type": "promptString"
+    }
+  ]
+}
+```
+
+Overall this is a shell command labelled DORKS.CRM.Webresources with two inputs: “solutionVersion” and “userPath”. Those inputs will be prompted whenever we click on the run task
+
+![Image11 - Visual Studio Code Tasks - Run Task](/static/images/blog/post1/Image11.png)
+
+**Image11** - Visual Studio Code Tasks - Run Task
+
+![Image 12 - Visual Studio Code Tasks - Tasks prompt](/static/images/blog/post1/Image12.png)
+
+**Image 12** - Visual Studio Code Tasks - Tasks prompt
+
+![Image13 - Visual Studio Code Tasks - userPath input](/static/images/blog/post1/Image13.png)
+
+**Image13** - Visual Studio Code Tasks - userPath input
+
+![Image14 - Visual Studio Code Tasks - solutionVersion](/static/images/blog/post1/Image14.png)
+
+**Image14** - Visual Studio Code Tasks - solutionVersion
+
+#### More Details
+
+Great! Let’s break down our command now:
+
+1 - We want to make sure that we are always in the right directory:
+
+```bash
+cd '${input:userPath}/DORKS.CRM.Webresources' ;
+```
+
+2 - As we are making changes to the solution we need to change its version:
+
+```bash
+pac solution online-version --solution-name DorksCRMWebresources --solution-version ${input:solutionVersion} ;
+```
+
+3 - Now we export the solution:
+
+```bash
+pac solution export --path ${input:userPath}\DORKS.CRM.Webresources --name DorksCRMWebresources --managed false --overwrite true ;
+```
+
+_The "--managed" flag is set to false, indicating that the solution is not a managed solution. The "--overwrite" flag is set to true, indicating that any existing solution files with the same name should be overwritten._
+
+4 - And unpack it:
+
+```bash
+pac solution unpack --zipfile ${input:userPath}\DORKS.CRM.Webresources\DorksCRMWebresources.zip --packagetype unmanaged --folder ${input:userPath}\DORKS.CRM.Webresources\deploy
+```
+
+_The "--packagetype" flag is set to "unmanaged", indicating that the solution is not a managed solution. The "--folder" flag specifies the folder where the solution files should be unpacked to._
+
+Your tasks.json file should look like this:
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "DORKS.CRM.Webresources",
+      "type": "shell",
+      "command": "cd '${input:userPath}/DORKS.CRM.Webresources' ; pac solution online-version --solution-name DorksCRMWebresources --solution-version ${input:solutionVersion} ; pac solution export --path '${input:userPath}/DORKS.CRM.Webresources' --name DorksCRMWebresources --managed false --overwrite true ; pac solution unpack --zipfile '${input:userPath}/DORKS.CRM.Webresources/DorksCRMWebresources.zip' --packagetype unmanaged --folder '${input:userPath}/DORKS.CRM.Webresources/deploy'"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "solutionVersion",
+      "description": "Solution Version for PAC tasks",
+      "default": "1.0.0.0",
+      "type": "promptString"
+    },
+    {
+      "id": "userPath",
+      "description": "User Path for PAC tasks",
+      "default": "Insert your path to the repo here.",
+      "type": "promptString"
+    }
+  ]
+}
+```
+
+Now, it’s time to Run the task. Go for it!
+
+![Image15 - Visual Studio Code Explorer - Final version of the project](/static/images/blog/post1/Image15.png)
+
+**Image15** - Visual Studio Code Explorer - Final version of the project
+
+You can then tweak the commands as much as you like to suit your [OCD](https://www.nhs.uk/mental-health/conditions/obsessive-compulsive-disorder-ocd/treatment/) needs in terms of the project structure.
+
+Let’s commit this to our repository now.
+
+![Image16 - Azure Devops Repository - After commit](/static/images/blog/post1/Image16.png)
+
+**Image16** - Azure Devops Repository - After commit
+
+### Making Updates
+
+Good news and bad news. The good news is that we are almost done! Bad news? Nothing really, just thought it would catch your attention. 😈
+
+The base of our solution is now on our repository, let's see the improvements now by adding the accountjs file to our solution, in our Dynamics 365 Environment, and running the task again.
+
+<aside
+  style={{
+    borderRadius: '3px',
+    background: 'rgb(241, 241, 239)',
+    padding: '12px',
+    color: 'rgb(31 32 35)',
+  }}
+>
+
+👉 Create the new component → Update the solution with the new component → Run the Task in Visual Studio Code
+
+</aside>
+
+![Image17 - Visual Studio Code - Final Structure](/static/images/blog/post1/Image17.png)
+
+**Image17** - Visual Studio Code - Final Structure
+
+As highlighted in green, that folder was newly added to our project after we extracted the zip and unpack it.
+
+Everything is now ready for the pull request. 🥳
+
+![Image18 - Azure DevOps - Pull Request Overview Part1](/static/images/blog/post1/Image18.png)
+
+**Image18** - Azure DevOps - Pull Request Overview Part1
+
+![Image19 - Azure DevOps - Pull Request Overview Part2](/static/images/blog/post1/Image19.png)
+
+**Image19** - Azure DevOps - Pull Request Overview Part2
+
+The entire team will now be able to see the changes that were made to the system. From the solution version to the component being added to the solution to the GUID of the web resource, you will have a full view of what was changed and what should have been changed.
+
+And, what we all deeply desire in the end, is an excuse to go grab a cup of coffee and celebrate this small but important victory. Cheers to making development processes more efficient and organized!
+
+Pff how lame was that…
+
+## The END
+
+![Untitled](/static/images/blog/post1/Image20.png)
+
+There is still so much more to cover on the PAC CLI, which can be a powerful tool for enabling new processes and workflows for your team. For example, you could use the CLI to automate routine tasks, streamline collaboration between team members, or quickly deploy new features or updates. By learning more about the PAC CLI, you can gain a deeper understanding of how it can help you and your team to work more efficiently and effectively.
+
+Furthermore, we are committed to providing you with even more hints and tricks on this topic, so that you can get the most out of the PAC CLI. In future blog posts, we will be sharing even more advanced techniques and strategies for working with the CLI, as well as tips for troubleshooting common issues and errors that you may encounter. So be sure to stay tuned for more information and resources!
+
+## BOOK OF HINTS
+
+👉 Look further in the official documents: [Microsoft Power Platform CLI](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction)
+
+👉 If you prefer youtube videos: [@MicrosoftDeveloper](https://www.youtube.com/@MicrosoftDeveloper/videos). Great channel for Dynamics365 + Azure content.

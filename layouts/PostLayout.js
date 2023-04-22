@@ -125,7 +125,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                         </div>
                       </div>
                     )}
-                    <TableOfContents />
+
                     {next && (
                       <div>
                         <h2 className="text-xs tracking-wide text-slate-500 uppercase dark:text-slate-400">
@@ -138,6 +138,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     )}
                   </div>
                 )}
+                <TableOfContents />
               </div>
               <div className="pt-4 xl:pt-8">
                 <Link

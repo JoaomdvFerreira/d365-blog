@@ -2,7 +2,7 @@
 title: Second post with PostSimple
 date: '2023-02-25'
 tags: ['markdown']
-draft: false
+draft: true
 summary: Testing post simple mechanics
 images: []
 layout: PostSimple

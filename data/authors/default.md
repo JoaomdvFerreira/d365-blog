@@ -5,7 +5,7 @@ avatar: /static/images/jf-avatar-new.jpg
 occupation: Analyst Programmer
 company: Savills
 email: joao.mdvferreira@gmail.com
-twitter: https://twitter.com/
+twitter: https://twitter.com/Dorks365
 linkedin: https://www.linkedin.com/
 github: https://github.com/JoaomdvFerreira
 text1: I'm an Analyst Programmer with a primary focus on CRM Dynamics 365 development and customization. I live in Portugal.
