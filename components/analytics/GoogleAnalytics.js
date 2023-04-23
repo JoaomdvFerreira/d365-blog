@@ -5,12 +5,12 @@ import siteMetadata from '@/data/siteMetadata'
 const GAScript = () => {
   return (
     <>
-      <Script
-        async
+      {/* <Script
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${siteMetadata.analytics.googleAnalyticsId}`}
       />
 
-      <Script id="ga-script">
+      <Script strategy="lazyOnload" id="ga-script">
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -19,7 +19,23 @@ const GAScript = () => {
               page_path: window.location.pathname,
             });
         `}
-      </Script>
+      </Script> */}
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${siteMetadata.analytics.googleAnalyticsId}`}
+      ></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${siteMetadata.analytics.googleAnalyticsId}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
     </>
   )
 }
