@@ -9,11 +9,14 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage }) => {
       <title>{title}</title>
       <meta name="robots" content="follow, index" />
       <meta name="description" content={description} />
+      <meta property="fb:app_id" content={siteMetadata.facebookAppId} />
       <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={siteMetadata.title} />
       <meta property="og:description" content={description} />
       <meta property="og:title" content={title} />
+      <meta property="og:image:alt" content="Dorks365 logo" />
+      <meta property="og:author" content={siteMetadata.author} />
       {ogImage.constructor.name === 'Array' ? (
         ogImage.map(({ url }) => <meta property="og:image" content={url} key={url} />)
       ) : (
@@ -136,7 +139,9 @@ export const BlogSEO = ({ authorDetails, title, summary, date, lastmod, url, ima
         twImage={twImageUrl}
       />
       <Head>
+        {authorDetails && <meta property="article:author" content={authorDetails[0].name} />}
         {date && <meta property="article:published_time" content={publishedAt} />}
+        {/* {tags && tags.map((tag) => <meta property="article:tag" content={tag} key={tag} />)} */}
         {lastmod && <meta property="article:modified_time" content={modifiedAt} />}
         <link rel="canonical" href={`${siteMetadata.siteUrl}${router.asPath}`} />
         <script
