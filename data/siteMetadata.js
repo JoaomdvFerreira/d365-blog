@@ -10,7 +10,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/JoaomdvFerreira/d365-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/logoSEO.png',
-  socialBanner: '/static/images/cover.png',
+  socialBanner: '/static/images/cover.jpg',
   email: 'joao.mdvferreira@gmail.com',
   github: 'https://github.com/JoaomdvFerreira',
   twitter: 'https://twitter.com/Dorks365',
