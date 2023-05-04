@@ -36,8 +36,8 @@ export default function Home({ posts }) {
               <Image
                 src="/static/images/logo.png"
                 alt="avatar"
-                width="384px"
-                height="384px"
+                width="384"
+                height="384"
                 // className=" [clip-path:polygon(0%_0%,100%_0%,50%_100%,0%_50%)]"
                 className="rounded-full"
               />
