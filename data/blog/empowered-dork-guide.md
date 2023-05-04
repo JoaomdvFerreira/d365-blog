@@ -20,7 +20,7 @@ _Language_: English
 
 _Source_: [Human Brains](https://en.wikipedia.org/wiki/Human_brain)
 
-![D Book](https://d365blog.vercel.app/public/static/images/blog/post2/ImageCover.jpg)
+![D Book](/static/images/blog/post2/ImageCover.jpg)
 
 ## Introduction
 
