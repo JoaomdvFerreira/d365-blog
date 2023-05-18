@@ -40,10 +40,23 @@ Leaving a list below with all the features presented for each module:
 
 The real showstopper? [Copilot in Viva Sales](https://www.youtube.com/watch?v=PAKYggQAlnc&ab_channel=MicrosoftDynamics365). Imagine having your personal Jarvis (yes, like Iron Man) living inside your Outlook or Teams. Need to respond to an email with CRM data? It’s on it. Looking for help with an email template? Consider it done. Want to record and summarize a Teams call? Easy peasy. It's like having a personal assistant, minus the coffee runs.
 
-Then things got serious with Microsoft Cloud's "Responsible AI Principles" and "Runs on Trust". It's clear Microsoft's taking the AI reins and isn't planning on unleashing Skynet on us anytime soon.
+Then things got serious with Microsoft Cloud's "Responsible AI Principles" and "Runs on Trust". It's clear Microsoft's taking the AI reins and isn't planning on unleashing 😈 **Skynet** 😈 on us anytime soon.
 
 ![Alt Text](https://media.giphy.com/media/IZY2SE2JmPgFG/giphy.gif)
 
+To round up the event, there was a very interesting Q&A session. Here are a few highlights:
+
+| <span style={{color: 'white'}}>Questions</span>                                   | <span style={{color: 'white'}}>Answers</span>                                                                                                                                                                                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| When is Copilot available for various countries (e.g., the Netherlands, Austria)? | Current release status for specific features and regions will be updated [here](https://experience.dynamics.com/releaseplans/?app=Marketing)                                                                                                                                            |
+| Is it possible to integrate the PVA bot on a website?                             | Yes, once your bot is created and tested, you can publish it to a website. More details [here](https://learn.microsoft.com/en-us/power-virtual-agents/fundamentals-get-started)                                                                                                         |
+| What kind of technology is used to protect organizations data?                    | All data used or generated with Azure OpenAI Service is stored encrypted at rest in your organization’s Azure subscription. Training data provided by the customer is only used to fine-tune the customer’s model and is not used by Microsoft to train or improve any Microsoft models |
+| Is integration with Excel ongoing?                                                | Work is in progress. More information [here](https://blogs.microsoft.com/blog/2023/03/16/introducing-microsoft-365-copilot-your-copilot-for-work/)                                                                                                                                      |
+
+---
+
 So, what's the bottom line, Dorkies? AI isn’t just about making robots do the robot dance. It's about transforming businesses into customer whisperers, making every interaction feel like a personalized high-five.
 
-So there you have it, folks! The future of customer experience is here, and it's got AI written all over it. Hold on to your pocket protectors, Dorkies, 'cause it's about to get wild! 🚀 Amazing times we live in, don't you think?
+There you have it, folks! The future of customer experience is here, and it's got AI written all over it. Hold on to your pocket protectors, Dorkies, 'cause it's about to get wild! 🚀
+
+Amazing times we live in, don't you think? 🤩🤩
