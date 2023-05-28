@@ -8,6 +8,8 @@ images: ['post3/ImageCover.jpg']
 layout: PostSimple
 ---
 
+![Microsoft 365 Copilot](/static/images/blog/post3/ImageCover.jpg)
+
 ## Day 1 - Geeking out at the Microsoft Build 2023!
 
 Oh, the joy of being a Dork, right? The opening day of the Microsoft Build 2023 was as shiny as a fresh-out-of-the-box Raspberry Pi. So grab your popcorn (or your IDE, whatever rocks your boat) and let's decode the first day at MBuild!
