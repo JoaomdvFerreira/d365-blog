@@ -1,0 +1,210 @@
+---
+title: Simplifying Connection References in D365 Environments
+date: '2023-08-06'
+tags: ['tutorial', 'azuredevops', 'dynamics365']
+draft: false
+summary: Unlock the power of Connection References in D365 Environments with our step-by-step guide. Simplify your workflows by efficiently deploying flows between environments, saving time, and reducing manual editing. Our solution, includes using the PAC CLI, creating independent solutions for flows, and reusing connection references. With this process, you get a one-time setup, and if you add new connectors, you just need to update one file. Embrace efficient DORK problem-solving and make your team proud!
+images: 'post4/ImageCover.jpg'
+layout: PostLayout
+---
+
+## Introduction
+
+Hello, Dorks! Here’s another exciting tip that could free up some time for you to
+indulge in that **Lord of the Rings marathon** or perhaps finish that ongoing game of **Dungeons & Dragons** (our favourite kind of DORK action).
+
+If you're reading this, chances are, you're a **DORK** with one of two needs. The first - you're here simply
+because you love what we do (and for that, we offer our heartfelt thanks), or secondly, you're racing
+against a deadline, hoping to nab this solution and emerge as the team's superhero.
+Imagine feeling like [Grace Hopper](https://en.wikipedia.org/wiki/Grace_Hopper), the legendary programmer after accomplishing this feat.
+
+For those in a rush, click here to jump straight to the <a href="#setup">juice</a>.
+
+## Problem
+
+Let's address the [Oliphaunt](https://non-aliencreatures.fandom.com/wiki/Oliphaunt) in the room: the common problem haunting us.
+
+The challenge is deploying flows between environments. Each time you do this, the connection references disappear,
+forcing you to constantly create new ones and edit existing ones.
+
+Rest easy, my fellow **DORKS**. Just as Samwise carried Frodo in the fellowship, we're here to carry you all the way to victory.
+
+![Sam's Promise](https://media.giphy.com/media/jPy4jJ8T3nyCI/giphy.gif)
+
+## Requirements
+
+- D365 Environments (DEV and QA)
+- VsCode -> [Installer](https://code.visualstudio.com/)
+- Azure DevOps tenant
+- Lord of the Rings extended edition (because you deserve a break) -> [Buy it - Not sponsored](https://www.ebay.co.uk/p/43442686?iid=295795359565)
+
+**Disclaimer:** You won't be able to do this with your personal account. You will need to have a [work/school account](https://support.microsoft.com/en-au/topic/sign-in-using-work-or-school-account-2481cfc0-3ddc-4b31-4be1-58cea3141f3c).
+
+## What are thoooose? (quick help on the lango)
+
+- **Service accounts** -> is a special type of account used to interact with the system programmatically. It is typically a non-interactive user account that is designed to run background tasks, integrations, or automated processes;
+- **DEV** -> short for Development Environment - our home ❤️‍🔥;
+- **QA** -> short for Quality Assurance - a part of the software development lifecycle used specifically for testing the software to ensure it meets quality standards;
+- **Connection References** -> helps manage and utilize connections in your applications and flows. They were introduced to make it easier to manage and promote applications between different environments;
+- **ADO** -> Azure DevOps.
+
+## Setup
+
+The setup should be second nature to you by now, but for posterity's sake,
+here's the equivalent of the **Middle Earth travel guide**:
+
+### Dynamics Envs
+
+- DEV and QA
+- Service accounts on each environment
+
+### Azure DevOps
+
+#### Step 1 - Create a project
+
+- Navigate to your newly created Azure DevOps tenant and click on new project;
+
+![New Project](/static/images/blog/post4/ado_new_project.png)
+
+- Fill in the modal with whatever fancy words you feeling to use;
+
+![Setup](/static/images/blog/post4/ado_new_project_modal.png)
+
+#### Step 2 - Create a repository
+
+- Click on the 'Repos' sidebar menu and create a new one to store your dreams;
+
+![New Repository](/static/images/blog/post4/ado_new_repo.png)
+
+- You can complete this step from the ADO tenant or from the VsCode but you should end up with this Repository structure.
+
+![Repository Structure](/static/images/blog/post4/ado_new_repo_completed.png)
+
+#### Step 3 - VsCode
+
+- I would love to repeat my self on the VSCode and ADO setup but I don't need to anymore! We have been through all of that in our blog already. Visit [this URL](./microsoft-power-platform-cli). **IT'S FREE!!**😎
+- This will be the PAC CLI command to use, on this tutorial, to get that deployment settings from the environment solution:
+  ```powershell
+  pac solution create-settings --solution-zip «solution_zip_file_path» --settings-file «settings_file_name»
+  ```
+
+#### Step 4 - Create a pipeline
+
+- Time to get that pipeline going;
+
+![New Pipeline](/static/images/blog/post4/ado_new_pipeline.png)
+
+- We rolling with the empty job as a template because we know what we are doing! 🤥
+
+![Template option](/static/images/blog/post4/ado_new_pipeline_template.png)
+
+- TA DA! This is our frame to work on for our pipeline. How good is the smell of new pipelines? Am I right?
+
+![Pipeline Frame](/static/images/blog/post4/ado_new_pipeline_frame.png)
+
+- Let's install Power Platform Build extension so we can have access to the right tasks
+
+![Marketplace Power Platform Build - 1](/static/images/blog/post4/ado_new_pipeline_marketplace.png)
+
+![Marketplace Power Platform Build - 2](/static/images/blog/post4/ado_new_pipeline_marketplace_ppb.png)
+
+- Perfect time to create the user serving as our service connection
+
+![Service Connection - 1](/static/images/blog/post4/ado_new_pipeline_serviceconnection.png)
+
+![Service Connection - 2](/static/images/blog/post4/ado_new_pipeline_serviceconnection_generic.png)
+
+![Service Connection - 3](/static/images/blog/post4/ado_new_pipeline_serviceconnection_pp.png)
+
+- For quick tests _(like this one)_ you can just use the **generic version** of the service connection but for real projects use the Power Platform connection type which points to an app registration. _(You can find the details: Client Secret; App Id; Tenant Id - on the Azure tenant, where you create the app reg.)_
+
+#### Step 5 - Setup tasks
+
+- Just like [Bob Ross](https://en.wikipedia.org/wiki/Bob_Ross) on the good old days said: _"It's hard to see things when you are too close."_
+  Let's paint!
+
+![Pipeline tasks - 1](/static/images/blog/post4/ado_new_pipeline_tasks.png)
+
+For the Power Platform Export Solution Task:
+
+- **1st:** Choose Authentication type;
+- **2nd:** Service Connection;
+- **3rd:** Solution Name (same as D365);
+- **4th:** Export as Managed Solution.
+
+![Pipeline tasks - 2](/static/images/blog/post4/ado_new_pipeline_tasks_export.png)
+
+For the Copy deploymentSettings Task:
+
+- **1st:** Source Folder(this points to your repository);
+- **2nd:** Contents;
+- **3rd:** Target Folder.
+
+![Pipeline tasks - 3](/static/images/blog/post4/ado_new_pipeline_tasks_deploymentSettings.png)
+
+And once again, like our beloved friend **Bob Ross** used to say: _"...so, from all of us here, I'd like to wish you happy painting, and God bless, my friend..."_
+
+![Pipeline tasks - 4](/static/images/blog/post4/ado_new_pipeline_tasks_completed.png)
+
+#### Step 6 - Create a release
+
+- Almost done! One more step to reach the Mount Doom!
+
+![New Release - 1](/static/images/blog/post4/ado_new_release.png)
+
+- Really important stuff here - make sure you check the 'Use deployment settings file' is turned on and pointing to the right path of your artifact
+
+![New Release - 2](/static/images/blog/post4/ado_new_release_stage.png)
+
+## Solution
+
+Now [Gollum](https://lotr.fandom.com/wiki/Gollum) is the only thing left to pass throught... that and your greed for power.
+
+- Create a connection reference in your QA environment using your choosen account;
+- Note the 'Connection Reference Display Name' and the 'Connection Id' using Advanced Find;
+
+![Connection Reference](/static/images/blog/post4/solution_connectionReference.png)
+
+- Create an independent solution for cloudflows and Connection References in DEV environment
+
+![Independent Solution](/static/images/blog/post4/solution_automations.png)
+
+- Update the deployment settings file in your repository;
+
+```JSON
+{
+  "ConnectionReferences": [
+    {
+      "LogicalName": "Microsoft Dataverse DorksCRMAutomations-0b5e9",
+      "ConnectionId": "shared-commondataser-9a6d8a41-d56a-45f4-84ab-b4afc8db905d",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    }
+  ]
+}
+```
+
+- Run the pipeline
+- Run the release
+- Pat yourself on the back. You did it!
+
+![It's Done!](https://media.giphy.com/media/Ajhi3tsHaGBB6/giphy.gif)
+
+**Extras:**
+
+- For a smoother operation and security concerns, use an App Registration as a Service Principal for Dataverse Connectors or a Service Account to create the Connection Reference.
+- The first time you do it make sure you turn on the flow on the Target environment. You will only need to do this only once.
+
+## Conclusion
+
+This process provides a one-time setup for all the flows. You can reuse the connection reference,
+and if you add a new connector, simply update the .json file _(deployment settings file)_.
+Even Sauron wouldn't stand a chance against our efficiency.
+
+If solving problems like a **DORK** was as easy as destroying **the One Ring**,
+the hobbits might never have made it to the big screen.
+
+So, there you have it. Our latest adventure comes to an end.
+I hope this guide helps you conquer your connection references challenges as
+efficiently as possible. Remember, in the world of **DORKS**, there’s always a solution.
+
+Stay tuned for more. **DORK out!**

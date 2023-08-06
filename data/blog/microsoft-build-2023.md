@@ -8,7 +8,7 @@ images: ['post3/ImageCover.jpg']
 layout: PostSimple
 ---
 
-![Microsoft 365 Copilot](/static/images/blog/post3/ImageCover.jpg)
+![Microsoft Buid 2023](/static/images/blog/post3/ImageCover.jpg)
 
 ## Day 1 - Geeking out at the Microsoft Build 2023!
 
